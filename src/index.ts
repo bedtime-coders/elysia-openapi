@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 
-import type { ReferenceConfiguration } from "@scalar/types";
+import type {
+	ApiReferenceConfiguration,
+	ReferenceConfiguration,
+} from "@scalar/types";
 import { Elysia, type InternalRoute } from "elysia";
 import type { OpenAPIV3 } from "openapi-types";
 import { ScalarRender } from "./scalar";
@@ -73,9 +76,8 @@ export const openapi = <Path extends string = "/docs">({
 						},
 						...scalarConfig,
 						// so we can showcase the elysia theme
-						// @ts-expect-error
 						_integration: "elysiajs",
-					} satisfies ReferenceConfiguration,
+					} satisfies ApiReferenceConfiguration,
 					scalarCDN,
 				),
 		{
