@@ -20,6 +20,9 @@ jobs:
 
             - name: Install packages
               run: bun install
+
+            - name: Build code
+              run: bun run build
               
             - name: Test
               run: bun run test
@@ -59,6 +62,6 @@ jobs:
             - name: Install packages
               run: bun install
               
-            - name: Test
+            - name: Test typesafety
               run: bun run typecheck
 
