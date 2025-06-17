@@ -1,15 +1,15 @@
-# @elysiajs/swagger
-Plugin for [elysia](https://github.com/elysiajs/elysia) to auto-generate Swagger page.
+# @bedtime-coders/elysia-openapi
+Plugin for [elysia](https://github.com/elysiajs/elysia) to auto-generate [OpenAPI](https://github.com/OAI/OpenAPI-Specification) page.
 
 ## Installation
 ```bash
-bun add @elysiajs/swagger
+bun add @bedtime-coders/elysia-openapi
 ```
 
 ## Example
 ```typescript
 import { Elysia, t } from 'elysia'
-import { swagger } from '@elysiajs/swagger'
+import { swagger } from '@bedtime-coders/elysia-openapi'
 
 const app = new Elysia()
     .use(swagger())
