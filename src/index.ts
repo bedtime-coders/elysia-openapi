@@ -5,7 +5,7 @@ import { Elysia, type InternalRoute } from "elysia";
 import type { OpenAPIV3 } from "openapi-types";
 import { ScalarRender } from "./scalar";
 import { SwaggerUIRender } from "./swagger";
-import type { ElysiaSwaggerConfig } from "./types";
+import type { ElysiaOpenAPICConfig } from "./types";
 import { filterPaths, registerSchemaPath } from "./utils";
 
 /**
@@ -29,7 +29,7 @@ export const openapi = <Path extends string = "/docs">({
 	autoDarkMode = true,
 	excludeMethods = ["OPTIONS"],
 	excludeTags = [],
-}: ElysiaSwaggerConfig<Path> = {}) => {
+}: ElysiaOpenAPICConfig<Path> = {}) => {
 	const schema = {};
 	let totalRoutes = 0;
 
@@ -186,5 +186,5 @@ export const openapi = <Path extends string = "/docs">({
 	return app;
 };
 
-export type { ElysiaSwaggerConfig };
+export type { ElysiaOpenAPICConfig };
 export default openapi;
