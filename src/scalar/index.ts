@@ -1,12 +1,12 @@
-import { elysiajsTheme } from '@scalar/themes'
-import type { OpenAPIV3 } from 'openapi-types'
-import type { ReferenceConfiguration } from '@scalar/types'
+import { elysiajsTheme } from "@scalar/themes";
+import type { ReferenceConfiguration } from "@scalar/types";
+import type { OpenAPIV3 } from "openapi-types";
 
 export const ScalarRender = (
-    info: OpenAPIV3.InfoObject,
-    version: string,
-    config: ReferenceConfiguration,
-    cdn: string
+	info: OpenAPIV3.InfoObject,
+	version: string,
+	config: ReferenceConfiguration,
+	cdn: string,
 ) => `<!doctype html>
 <html>
   <head>
@@ -40,9 +40,9 @@ export const ScalarRender = (
     >
     </script>
     <script src="${
-        cdn
-            ? cdn
-            : `https://cdn.jsdelivr.net/npm/@scalar/api-reference@${version}/dist/browser/standalone.min.js`
-    }" crossorigin></script>
+			cdn
+				? cdn
+				: `https://cdn.jsdelivr.net/npm/@scalar/api-reference@${version}/dist/browser/standalone.min.js`
+		}" crossorigin></script>
   </body>
-</html>`
+</html>`;

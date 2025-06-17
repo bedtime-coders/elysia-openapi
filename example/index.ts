@@ -1,59 +1,59 @@
-import { Elysia, t } from 'elysia'
-import { swagger } from '../src/index'
+import { Elysia, t } from "elysia";
+import { swagger } from "../src/index";
 
 const schema = t.Object({
-	test: t.Literal('hello')
-})
+	test: t.Literal("hello"),
+});
 
 const app = new Elysia()
 	.use(
 		swagger({
-			provider: 'scalar',
+			provider: "scalar",
 			documentation: {
 				info: {
-					title: 'Elysia Scalar',
-					version: '0.8.1'
+					title: "Elysia Scalar",
+					version: "0.8.1",
 				},
 				tags: [
 					{
-						name: 'Test',
-						description: 'Hello'
-					}
+						name: "Test",
+						description: "Hello",
+					},
 				],
 				components: {
 					schemas: {
 						User: {
-							description: 'string'
-						}
+							description: "string",
+						},
 					},
 					securitySchemes: {
 						JwtAuth: {
-							type: 'http',
-							scheme: 'bearer',
-							bearerFormat: 'JWT',
-							description: 'Enter JWT Bearer token **_only_**'
-						}
-					}
-				}
+							type: "http",
+							scheme: "bearer",
+							bearerFormat: "JWT",
+							description: "Enter JWT Bearer token **_only_**",
+						},
+					},
+				},
 			},
 			swaggerOptions: {
-				persistAuthorization: true
-			}
-		})
+				persistAuthorization: true,
+			},
+		}),
 	)
 	.model({ schema })
 	.get(
-		'/',
+		"/",
 		() => {
-			return { test: 'hello' as const }
+			return { test: "hello" as const };
 		},
 		{
-			response: 'schema'
-		}
+			response: "schema",
+		},
 	)
-	.post('/json', ({ body }) => body, {
-		parse: 'formdata',
-		body: 'schema',
-		response: 'schema'
+	.post("/json", ({ body }) => body, {
+		parse: "formdata",
+		body: "schema",
+		response: "schema",
 	})
-	.listen(3000)
+	.listen(3000);

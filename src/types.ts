@@ -1,8 +1,8 @@
-import type { OpenAPIV3 } from 'openapi-types'
-import type { ReferenceConfiguration } from '@scalar/types'
-import type { SwaggerUIOptions } from './swagger/types'
+import type { ReferenceConfiguration } from "@scalar/types";
+import type { OpenAPIV3 } from "openapi-types";
+import type { SwaggerUIOptions } from "./swagger/types";
 
-export interface ElysiaSwaggerConfig<Path extends string = '/swagger'> {
+export interface ElysiaSwaggerConfig<Path extends string = "/swagger"> {
 	/**
 	 * Customize Swagger config, refers to Swagger 2.0 config
 	 *
@@ -10,9 +10,9 @@ export interface ElysiaSwaggerConfig<Path extends string = '/swagger'> {
 	 */
 	documentation?: Omit<
 		Partial<OpenAPIV3.Document>,
-		| 'x-express-openapi-additional-middleware'
-		| 'x-express-openapi-validation-strict'
-	>
+		| "x-express-openapi-additional-middleware"
+		| "x-express-openapi-validation-strict"
+	>;
 	/**
 	 * Choose your provider, Scalar or Swagger UI
 	 *
@@ -20,14 +20,14 @@ export interface ElysiaSwaggerConfig<Path extends string = '/swagger'> {
 	 * @see https://github.com/scalar/scalar
 	 * @see https://github.com/swagger-api/swagger-ui
 	 */
-	provider?: 'scalar' | 'swagger-ui'
+	provider?: "scalar" | "swagger-ui";
 	/**
 	 * Version to use for Scalar cdn bundle
 	 *
 	 * @default 'latest'
 	 * @see https://github.com/scalar/scalar
 	 */
-	scalarVersion?: string
+	scalarVersion?: string;
 	/**
 	 * Optional override to specifying the path for the Scalar bundle
 	 *
@@ -40,13 +40,13 @@ export interface ElysiaSwaggerConfig<Path extends string = '/swagger'> {
 	 * @example '/public/standalone.js'
 	 * @see https://github.com/scalar/scalar
 	 */
-	scalarCDN?: string
+	scalarCDN?: string;
 	/**
 	 * Scalar configuration to customize scalar
 	 *'
 	 * @see https://github.com/scalar/scalar/blob/main/documentation/configuration.md
 	 */
-	scalarConfig?: ReferenceConfiguration
+	scalarConfig?: ReferenceConfiguration;
 	/**
 	 * Version to use for swagger cdn bundle
 	 *
@@ -54,31 +54,31 @@ export interface ElysiaSwaggerConfig<Path extends string = '/swagger'> {
 	 *
 	 * @default 4.18.2
 	 */
-	version?: string
+	version?: string;
 	/**
 	 * Determine if Swagger should exclude static files.
 	 *
 	 * @default true
 	 */
-	excludeStaticFile?: boolean
+	excludeStaticFile?: boolean;
 	/**
 	 * The endpoint to expose OpenAPI Documentation
 	 *
 	 * @default '/swagger'
 	 */
-	path?: Path
+	path?: Path;
 	/**
 	 * The endpoint to expose OpenAPI JSON specification
 	 *
 	 * @default '/${path}/json'
 	 */
-	specPath?: string
+	specPath?: string;
 	/**
 	 * Paths to exclude from Swagger endpoint
 	 *
 	 * @default []
 	 */
-	exclude?: string | RegExp | (string | RegExp)[]
+	exclude?: string | RegExp | (string | RegExp)[];
 	/**
 	 * Options to send to SwaggerUIBundle
 	 * Currently, options that are defined as functions such as requestInterceptor
@@ -86,42 +86,42 @@ export interface ElysiaSwaggerConfig<Path extends string = '/swagger'> {
 	 */
 	swaggerOptions?: Omit<
 		Partial<SwaggerUIOptions>,
-		| 'dom_id'
-		| 'dom_node'
-		| 'spec'
-		| 'url'
-		| 'urls'
-		| 'layout'
-		| 'pluginsOptions'
-		| 'plugins'
-		| 'presets'
-		| 'onComplete'
-		| 'requestInterceptor'
-		| 'responseInterceptor'
-		| 'modelPropertyMacro'
-		| 'parameterMacro'
-	>
+		| "dom_id"
+		| "dom_node"
+		| "spec"
+		| "url"
+		| "urls"
+		| "layout"
+		| "pluginsOptions"
+		| "plugins"
+		| "presets"
+		| "onComplete"
+		| "requestInterceptor"
+		| "responseInterceptor"
+		| "modelPropertyMacro"
+		| "parameterMacro"
+	>;
 	/**
 	 * Custom Swagger CSS
 	 */
 	theme?:
 		| string
 		| {
-				light: string
-				dark: string
-		  }
+				light: string;
+				dark: string;
+		  };
 	/**
 	 * Using poor man dark mode 😭
 	 */
-	autoDarkMode?: boolean
+	autoDarkMode?: boolean;
 
 	/**
 	 * Exclude methods from Swagger
 	 */
-	excludeMethods?: string[]
+	excludeMethods?: string[];
 
 	/**
 	 * Exclude tags from Swagger or Scalar
 	 */
-	excludeTags?: string[]
+	excludeTags?: string[];
 }

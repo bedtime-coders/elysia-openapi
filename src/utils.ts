@@ -1,35 +1,35 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { normalize } from 'pathe'
-import { replaceSchemaType, t, type HTTPMethod, type LocalHook } from 'elysia'
 
-import { Kind, type TSchema } from '@sinclair/typebox'
-import type { OpenAPIV3 } from 'openapi-types'
+import { Kind, type TSchema } from "@sinclair/typebox";
+import { type HTTPMethod, type LocalHook, replaceSchemaType, t } from "elysia";
+import type { OpenAPIV3 } from "openapi-types";
+import { normalize } from "pathe";
 
 export const toOpenAPIPath = (path: string) =>
 	path
-		.split('/')
+		.split("/")
 		.map((x) => {
-			if (x.startsWith(':')) {
-				x = x.slice(1, x.length)
-				if (x.endsWith('?')) x = x.slice(0, -1)
-				x = `{${x}}`
+			if (x.startsWith(":")) {
+				x = x.slice(1, x.length);
+				if (x.endsWith("?")) x = x.slice(0, -1);
+				x = `{${x}}`;
 			}
 
-			return x
+			return x;
 		})
-		.join('/')
+		.join("/");
 
 export const mapProperties = (
 	name: string,
 	schema: TSchema | string | undefined,
-	models: Record<string, TSchema>
+	models: Record<string, TSchema>,
 ) => {
-	if (schema === undefined) return []
+	if (schema === undefined) return [];
 
-	if (typeof schema === 'string')
-		if (schema in models) schema = models[schema]
-		else throw new Error(`Can't find model ${schema}`)
+	if (typeof schema === "string")
+		if (schema in models) schema = models[schema];
+		else throw new Error(`Can't find model ${schema}`);
 
 	return Object.entries(schema?.properties ?? []).map(([key, value]) => {
 		const {
@@ -37,7 +37,7 @@ export const mapProperties = (
 			description,
 			examples,
 			...schemaKeywords
-		} = value as any
+		} = value as any;
 		return {
 			// @ts-ignore
 			description,
@@ -46,168 +46,156 @@ export const mapProperties = (
 			in: name,
 			name: key,
 			// @ts-ignore
-			required: schema!.required?.includes(key) ?? false
-		}
-	})
-}
+			required: schema!.required?.includes(key) ?? false,
+		};
+	});
+};
 
 const mapTypesResponse = (
 	types: string[],
 	schema:
 		| string
 		| {
-				type: string
-				properties: Object
-				required: string[]
-		  }
+				type: string;
+				properties: Object;
+				required: string[];
+		  },
 ) => {
 	if (
-		typeof schema === 'object' &&
-		['void', 'undefined', 'null'].includes(schema.type)
+		typeof schema === "object" &&
+		["void", "undefined", "null"].includes(schema.type)
 	)
-		return
+		return;
 
-	const responses: Record<string, OpenAPIV3.MediaTypeObject> = {}
+	const responses: Record<string, OpenAPIV3.MediaTypeObject> = {};
 
 	for (const type of types) {
 		responses[type] = {
 			schema:
-				typeof schema === 'string'
+				typeof schema === "string"
 					? {
-							$ref: `#/components/schemas/${schema}`
+							$ref: `#/components/schemas/${schema}`,
 						}
-					: '$ref' in schema &&
-						  Kind in schema &&
-						  schema[Kind] === 'Ref'
+					: "$ref" in schema && Kind in schema && schema[Kind] === "Ref"
 						? {
 								...schema,
-								$ref: `#/components/schemas/${schema.$ref}`
+								$ref: `#/components/schemas/${schema.$ref}`,
 							}
 						: replaceSchemaType(
 								{ ...(schema as any) },
 								{
-									from: t.Ref(''),
+									from: t.Ref(""),
 									// @ts-expect-error
 									to: ({ $ref, ...options }) => {
-										if (
-											!$ref.startsWith(
-												'#/components/schemas/'
-											)
-										)
-											return t.Ref(
-												`#/components/schemas/${$ref}`,
-												options
-											)
+										if (!$ref.startsWith("#/components/schemas/"))
+											return t.Ref(`#/components/schemas/${$ref}`, options);
 
-										return t.Ref($ref, options)
-									}
-								}
-							)
-		}
+										return t.Ref($ref, options);
+									},
+								},
+							),
+		};
 	}
 
-	return responses
-}
+	return responses;
+};
 
 export const capitalize = (word: string) =>
-	word.charAt(0).toUpperCase() + word.slice(1)
+	word.charAt(0).toUpperCase() + word.slice(1);
 
 export const generateOperationId = (method: string, paths: string) => {
-	let operationId = method.toLowerCase()
+	let operationId = method.toLowerCase();
 
-	if (paths === '/') return operationId + 'Index'
+	if (paths === "/") return operationId + "Index";
 
-	for (const path of paths.split('/')) {
+	for (const path of paths.split("/")) {
 		if (path.charCodeAt(0) === 123) {
-			operationId += 'By' + capitalize(path.slice(1, -1))
+			operationId += "By" + capitalize(path.slice(1, -1));
 		} else {
-			operationId += capitalize(path)
+			operationId += capitalize(path);
 		}
 	}
 
-	return operationId
-}
+	return operationId;
+};
 
 const cloneHook = <T>(hook: T) => {
-	if (!hook) return
-	if (typeof hook === 'string') return hook
-	if (Array.isArray(hook)) return [...hook]
-	return { ...hook }
-}
+	if (!hook) return;
+	if (typeof hook === "string") return hook;
+	if (Array.isArray(hook)) return [...hook];
+	return { ...hook };
+};
 
 export const registerSchemaPath = ({
 	schema,
 	path,
 	method,
 	hook,
-	models
+	models,
 }: {
-	schema: Partial<OpenAPIV3.PathsObject>
-	contentType?: string | string[]
-	path: string
-	method: HTTPMethod
-	hook?: LocalHook<any, any, any, any, any, any>
-	models: Record<string, TSchema>
+	schema: Partial<OpenAPIV3.PathsObject>;
+	contentType?: string | string[];
+	path: string;
+	method: HTTPMethod;
+	hook?: LocalHook<any, any, any, any, any, any>;
+	models: Record<string, TSchema>;
 }) => {
-	hook = cloneHook(hook)
+	hook = cloneHook(hook);
 
-	if (hook.parse && !Array.isArray(hook.parse)) hook.parse = [hook.parse]
+	if (hook.parse && !Array.isArray(hook.parse)) hook.parse = [hook.parse];
 
 	let contentType = (hook.parse as unknown[])
 		?.map((x) => {
 			switch (typeof x) {
-				case 'string':
-					return x
+				case "string":
+					return x;
 
-				case 'object':
-					if (
-						x &&
-						typeof (x as { fn: string | Function })?.fn !== 'string'
-					)
-						return
+				case "object":
+					if (x && typeof (x as { fn: string | Function })?.fn !== "string")
+						return;
 
 					switch ((x as { fn: string | Function })?.fn) {
-						case 'json':
-						case 'application/json':
-							return 'application/json'
+						case "json":
+						case "application/json":
+							return "application/json";
 
-						case 'text':
-						case 'text/plain':
-							return 'text/plain'
+						case "text":
+						case "text/plain":
+							return "text/plain";
 
-						case 'urlencoded':
-						case 'application/x-www-form-urlencoded':
-							return 'application/x-www-form-urlencoded'
+						case "urlencoded":
+						case "application/x-www-form-urlencoded":
+							return "application/x-www-form-urlencoded";
 
-						case 'arrayBuffer':
-						case 'application/octet-stream':
-							return 'application/octet-stream'
+						case "arrayBuffer":
+						case "application/octet-stream":
+							return "application/octet-stream";
 
-						case 'formdata':
-						case 'multipart/form-data':
-							return 'multipart/form-data'
+						case "formdata":
+						case "multipart/form-data":
+							return "multipart/form-data";
 					}
 			}
 		})
-		.filter((x) => x !== undefined)
+		.filter((x) => x !== undefined);
 
 	if (!contentType || contentType.length === 0)
-		contentType = ['application/json', 'multipart/form-data', 'text/plain']
+		contentType = ["application/json", "multipart/form-data", "text/plain"];
 
-	path = toOpenAPIPath(path)
+	path = toOpenAPIPath(path);
 
 	const contentTypes =
-		typeof contentType === 'string'
+		typeof contentType === "string"
 			? [contentType]
-			: (contentType ?? ['application/json'])
+			: (contentType ?? ["application/json"]);
 
-	const bodySchema = cloneHook(hook?.body)
-	const paramsSchema = cloneHook(hook?.params)
-	const headerSchema = cloneHook(hook?.headers)
-	const querySchema = cloneHook(hook?.query)
-	let responseSchema: OpenAPIV3.ResponsesObject = cloneHook(hook?.response)
+	const bodySchema = cloneHook(hook?.body);
+	const paramsSchema = cloneHook(hook?.params);
+	const headerSchema = cloneHook(hook?.headers);
+	const querySchema = cloneHook(hook?.query);
+	let responseSchema: OpenAPIV3.ResponsesObject = cloneHook(hook?.response);
 
-	if (typeof responseSchema === 'object') {
+	if (typeof responseSchema === "object") {
 		if (Kind in responseSchema) {
 			const {
 				type,
@@ -218,34 +206,34 @@ export const registerSchemaPath = ({
 				$ref,
 				...rest
 			} = responseSchema as typeof responseSchema & {
-				type: string
-				properties: Object
-				required: string[]
-			}
+				type: string;
+				properties: Object;
+				required: string[];
+			};
 
 			responseSchema = {
-				'200': {
+				"200": {
 					...rest,
 					description: rest.description as any,
 					content: mapTypesResponse(
 						contentTypes,
-						type === 'object' || type === 'array'
+						type === "object" || type === "array"
 							? ({
 									type,
 									properties,
 									patternProperties,
 									items: responseSchema.items,
-									required
+									required,
 								} as any)
-							: responseSchema
-					)
-				}
-			}
+							: responseSchema,
+					),
+				},
+			};
 		} else {
 			Object.entries(responseSchema as Record<string, TSchema>).forEach(
 				([key, value]) => {
-					if (typeof value === 'string') {
-						if (!models[value]) return
+					if (typeof value === "string") {
+						if (!models[value]) return;
 
 						// eslint-disable-next-line @typescript-eslint/no-unused-vars
 						const {
@@ -256,16 +244,16 @@ export const registerSchemaPath = ({
 							patternProperties: _2,
 							...rest
 						} = models[value] as TSchema & {
-							type: string
-							properties: Object
-							required: string[]
-						}
+							type: string;
+							properties: Object;
+							required: string[];
+						};
 
 						responseSchema[key] = {
 							...rest,
 							description: rest.description as any,
-							content: mapTypesResponse(contentTypes, value)
-						}
+							content: mapTypesResponse(contentTypes, value),
+						};
 					} else {
 						const {
 							type,
@@ -275,33 +263,33 @@ export const registerSchemaPath = ({
 							patternProperties,
 							...rest
 						} = value as typeof value & {
-							type: string
-							properties: Object
-							required: string[]
-						}
+							type: string;
+							properties: Object;
+							required: string[];
+						};
 
 						responseSchema[key] = {
 							...rest,
 							description: rest.description as any,
 							content: mapTypesResponse(
 								contentTypes,
-								type === 'object' || type === 'array'
+								type === "object" || type === "array"
 									? ({
 											type,
 											properties,
 											patternProperties,
 											items: value.items,
-											required
+											required,
 										} as any)
-									: value
-							)
-						}
+									: value,
+							),
+						};
 					}
-				}
-			)
+				},
+			);
 		}
-	} else if (typeof responseSchema === 'string') {
-		if (!(responseSchema in models)) return
+	} else if (typeof responseSchema === "string") {
+		if (!(responseSchema in models)) return;
 
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		const {
@@ -313,25 +301,25 @@ export const registerSchemaPath = ({
 			patternProperties: _2,
 			...rest
 		} = models[responseSchema] as TSchema & {
-			type: string
-			properties: Object
-			required: string[]
-		}
+			type: string;
+			properties: Object;
+			required: string[];
+		};
 
 		responseSchema = {
 			// @ts-ignore
-			'200': {
+			"200": {
 				...rest,
-				content: mapTypesResponse(contentTypes, responseSchema)
-			}
-		}
+				content: mapTypesResponse(contentTypes, responseSchema),
+			},
+		};
 	}
 
 	const parameters = [
-		...mapProperties('header', headerSchema, models),
-		...mapProperties('path', paramsSchema, models),
-		...mapProperties('query', querySchema, models)
-	]
+		...mapProperties("header", headerSchema, models),
+		...mapProperties("path", paramsSchema, models),
+		...mapProperties("query", querySchema, models),
+	];
 
 	schema[path] = {
 		...(schema[path] ? schema[path] : {}),
@@ -341,7 +329,7 @@ export const registerSchemaPath = ({
 				: {}) satisfies OpenAPIV3.ParameterObject),
 			...(responseSchema
 				? {
-						responses: responseSchema
+						responses: responseSchema,
 					}
 				: {}),
 			operationId:
@@ -353,78 +341,77 @@ export const registerSchemaPath = ({
 							required: true,
 							content: mapTypesResponse(
 								contentTypes,
-								typeof bodySchema === 'string'
+								typeof bodySchema === "string"
 									? {
-											$ref: `#/components/schemas/${bodySchema}`
+											$ref: `#/components/schemas/${bodySchema}`,
 										}
-									: (bodySchema as any)
-							)
-						}
+									: (bodySchema as any),
+							),
+						},
 					}
-				: null)
-		} satisfies OpenAPIV3.OperationObject
-	}
-}
+				: null),
+		} satisfies OpenAPIV3.OperationObject,
+	};
+};
 
 export const filterPaths = (
 	paths: Record<string, any>,
 	{
 		excludeStaticFile = true,
-		exclude = []
+		exclude = [],
 	}: {
-		excludeStaticFile: boolean
-		exclude: (string | RegExp)[]
-	}
+		excludeStaticFile: boolean;
+		exclude: (string | RegExp)[];
+	},
 ) => {
-	const newPaths: Record<string, any> = {}
+	const newPaths: Record<string, any> = {};
 
 	for (const [key, value] of Object.entries(paths))
 		if (
 			!exclude.some((x) => {
-				if (typeof x === 'string') return key === x
+				if (typeof x === "string") return key === x;
 
-				return x.test(key)
+				return x.test(key);
 			}) &&
-			!key.includes('*') &&
-			(excludeStaticFile ? !key.includes('.') : true)
+			!key.includes("*") &&
+			(excludeStaticFile ? !key.includes(".") : true)
 		) {
 			Object.keys(value).forEach((method) => {
-				const schema = value[method]
+				const schema = value[method];
 
-				if (key.includes('{')) {
-					if (!schema.parameters) schema.parameters = []
+				if (key.includes("{")) {
+					if (!schema.parameters) schema.parameters = [];
 
 					schema.parameters = [
 						...key
-							.split('/')
+							.split("/")
 							.filter(
 								(x) =>
-									x.startsWith('{') &&
+									x.startsWith("{") &&
 									!schema.parameters.find(
 										(params: Record<string, any>) =>
-											params.in === 'path' &&
-											params.name ===
-												x.slice(1, x.length - 1)
-									)
+											params.in === "path" &&
+											params.name === x.slice(1, x.length - 1),
+									),
 							)
 							.map((x) => ({
-								schema: { type: 'string' },
-								in: 'path',
+								schema: { type: "string" },
+								in: "path",
 								name: x.slice(1, x.length - 1),
-								required: true
+								required: true,
 							})),
-						...schema.parameters
-					]
+						...schema.parameters,
+					];
 				}
 
 				if (!schema.responses)
 					schema.responses = {
-						200: {}
-					}
-			})
+						200: {},
+					};
+			});
 
-			newPaths[key] = value
+			newPaths[key] = value;
 		}
 
-	return newPaths
-}
+	return newPaths;
+};
