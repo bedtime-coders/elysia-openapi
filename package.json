@@ -1,6 +1,6 @@
 {
 	"name": "@bedtime-coders/elysia-openapi",
-	"version": "1.3.0",
+	"version": "0.0.1",
 	"description": "Plugin for Elysia to auto-generate OpenAPI page",
 	"author": {
 		"name": "Yam Borodetsky",
@@ -39,12 +39,12 @@
 		}
 	},
 	"keywords": ["elysia", "swagger"],
-	"homepage": "https://github.com/elysiajs/elysia-swagger",
+	"homepage": "https://github.com/yamcodes/elysia-openapi",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/elysiajs/elysia-swagger"
+		"url": "https://github.com/yamcodes/elysia-openapi"
 	},
-	"bugs": "https://github.com/elysiajs/elysia-swagger/issues",
+	"bugs": "https://github.com/yamcodes/elysia-openapi/issues",
 	"license": "MIT",
 	"scripts": {
 		"dev": "bun run --watch example/index.ts",
@@ -65,9 +65,13 @@
 		"typescript": "^5.5.3"
 	},
 	"dependencies": {
-		"@scalar/themes": "^0.9.52",
-		"@scalar/types": "^0.0.12",
+		"@changesets/cli": "^2.29.4",
+		"@scalar/themes": "^0.13.3",
+		"@scalar/types": "^0.2.3",
 		"openapi-types": "^12.1.3",
 		"pathe": "^1.1.2"
+	},
+	"publishConfig": {
+		"access": "public"
 	}
 }
