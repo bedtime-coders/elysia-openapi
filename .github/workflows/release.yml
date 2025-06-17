@@ -30,10 +30,17 @@ jobs:
         run: bun install
 
       - name: Create Release Pull Request
+        id: release
         uses: changesets/action@v1
         with:
           publish: bun publish
           createGithubReleases: true
+          commitMode: github-api
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_CONFIG_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Echo outputs from above step
+        run: |
+          echo "published: ${{ steps.release.outputs.published }}"
+          echo "publishedPackages: ${{ steps.release.outputs.publishedPackages }}"
