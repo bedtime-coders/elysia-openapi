@@ -1,5 +1,5 @@
 # @bedtime-coders/elysia-openapi
-Plugin for [elysia](https://github.com/elysiajs/elysia) to auto-generate [OpenAPI](https://github.com/OAI/OpenAPI-Specification) page.
+Plugin for [ElysiaJS](https://github.com/elysiajs/elysia) to auto-generate [OpenAPI](https://github.com/OAI/OpenAPI-Specification) page.
 
 ## Installation
 ```bash
@@ -48,26 +48,27 @@ Then go to `http://localhost:8080/docs`.
 # config
 
 ## provider
-@default 'scalar'
+`@default 'scalar'`
+
 Choose between [Scalar API Reference](https://github.com/scalar/scalar) & [Swagger UI](https://github.com/swagger-api/swagger-ui)
 
 ## scalar
-Customize scalarConfig, refers to [Scalar config](https://github.com/scalar/scalar/blob/main/documentation/configuration.md)
+Customize `scalarConfig`, refers to [Scalar config](https://github.com/scalar/scalar/blob/main/documentation/configuration.md)
 
 ## swagger
 Customize Swagger config, refers to [Swagger 3.0.3 config](https://swagger.io/specification/v3)
 
 ## path
-@default '/docs'
+`@default '/docs'`
 
 The endpoint to expose Swagger UI
 
 ## excludeStaticFile
-@default true
+`@default true`
 
 Determine if Swagger should exclude static files.
 
 ## exclude
-@default []
+`@default []`
 
 Paths to exclude from the Swagger endpoint
