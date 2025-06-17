@@ -14,6 +14,8 @@
 
 -   207defe: Bump @scalar packages
 
-## 0.0.0 - 17 June 2025
+## 0.0.1
 
-First release
+### Patch Changes
+
+-   First release
