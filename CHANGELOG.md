@@ -4,43 +4,7 @@
 
 ### Patch Changes
 
--   Fix Changeset Publish NPM*TOKEN *[`23aff67`](https://github.com/bedtime-coders/elysia-openapi/commit/23aff67e1eed4547fe1f358a2b13a22fb41a111a) [@yamcodes](https://github.com/yamcodes)\_
-
-## 0.0.12
-
-### Patch Changes
-
--   Fix Changeset Publish _[`a3f75f0`](https://github.com/bedtime-coders/elysia-openapi/commit/a3f75f086b8966f2bd03480187c0eb79bbcf3ada) [@yamcodes](https://github.com/yamcodes)_
-
-## 0.0.11
-
-### Patch Changes
-
--   Fix Changeset Publish _[`faa0dd5`](https://github.com/bedtime-coders/elysia-openapi/commit/faa0dd53136203e082683da267e55f25589c73b4) [@yamcodes](https://github.com/yamcodes)_
-
-## 0.0.10
-
-### Patch Changes
-
--   Fix GitHub CI _[`ac403ae`](https://github.com/bedtime-coders/elysia-openapi/commit/ac403aea1c8bc5d607901b0b058f3719bf4218fc) [@yamcodes](https://github.com/yamcodes)_
-
-## 0.0.9
-
-### Patch Changes
-
--   Fix GitHub Releases issue _[`1946a94`](https://github.com/bedtime-coders/elysia-openapi/commit/1946a944c5a10951017d78f988a831d8176aa4f4) [@yamcodes](https://github.com/yamcodes)_
-
-## 0.0.8
-
-### Patch Changes
-
--   Fix GitHub Release permissions _[`f518139`](https://github.com/bedtime-coders/elysia-openapi/commit/f518139bf3863eb0c1fafa541f6b39f4a2c53c3a) [@yamcodes](https://github.com/yamcodes)_
-
-## 0.0.7
-
-### Patch Changes
-
--   Fix Changesets GitHub Releases _[`d995d0d`](https://github.com/bedtime-coders/elysia-openapi/commit/d995d0de682e32a7432de03fdf177ba361de53d5) [@yamcodes](https://github.com/yamcodes)_
+- Fix Changeset Publish _[`23aff67`](https://github.com/bedtime-coders/elysia-openapi/commit/23aff67e1eed4547fe1f358a2b13a22fb41a111a) [@yamcodes](https://github.com/yamcodes)_
 
 ## 0.0.6
 
@@ -48,34 +12,16 @@
 
 -   Fix Changesets config _[`1902487`](https://github.com/bedtime-coders/elysia-openapi/commit/19024872c91abf1d2d7b9bd006874eb0af85777e) [@yamcodes](https://github.com/yamcodes)_
 
-## 0.0.5
-
-### Patch Changes
-
--   e6e3c22: Fix GitHub Releases issue
-
-## 0.0.4
-
-### Patch Changes
-
--   5b7cfb9: Fix publishing issue
-
 ## 0.0.3
 
 ### Patch Changes
 
--   3889419: Change "swagger" references into "openapi"
--   e9d6985: Fix import bug
--   7bb8255: Fix build issue
+-  Change `swagger` references into `openapi` _[`3889419`](https://github.com/bedtime-coders/elysia-openapi/commit/388941913a3dff6dc904016d408eec21376a8958) [@yamcodes](https://github.com/yamcodes)_
+-  Fix import bug _[`e9d6985`](https://github.com/bedtime-coders/elysia-openapi/commit/e9d69855ec040ded217ebff0e7b6abbbb5800b83) [@yamcodes](https://github.com/yamcodes)_
+-  Fix build issue _[`7bb8255`](https://github.com/bedtime-coders/elysia-openapi/commit/7bb8255d8dc9f5829d408425208af6e92874f13a) [@yamcodes](https://github.com/yamcodes)_
 
 ## 0.0.2
 
 ### Patch Changes
 
--   207defe: Bump @scalar packages
-
-## 0.0.1
-
-### Patch Changes
-
--   First release
+-  Bump `@scalar` packages _[`207defe`](https://github.com/bedtime-coders/elysia-openapi/commit/207defe0c7985905fbc731c22fdd570388490ddf) [@yamcodes](https://github.com/yamcodes)_
