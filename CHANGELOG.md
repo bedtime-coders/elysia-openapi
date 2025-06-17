@@ -1,5 +1,11 @@
 # `@bedtime-coders/elysia-openapi` Changelog
 
+## 0.0.9
+
+### Patch Changes
+
+-   Fix GitHub Releases issue _[`1946a94`](https://github.com/bedtime-coders/elysia-openapi/commit/1946a944c5a10951017d78f988a831d8176aa4f4) [@yamcodes](https://github.com/yamcodes)_
+
 ## 0.0.8
 
 ### Patch Changes
