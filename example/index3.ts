@@ -57,4 +57,4 @@ const app = new Elysia()
 	.use(plugin)
 	.listen(3000);
 
-console.log(app.rsaoutes);
+console.log(app.routes);
