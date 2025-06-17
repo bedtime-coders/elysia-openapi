@@ -1,6 +1,6 @@
 {
 	"name": "@bedtime-coders/elysia-openapi",
-	"version": "0.0.11",
+	"version": "0.0.12",
 	"description": "Plugin for Elysia to auto-generate OpenAPI page",
 	"author": {
 		"name": "Yam Borodetsky",
