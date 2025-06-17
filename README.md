@@ -1,5 +1,9 @@
 <div align="center">
     <img src="./public/header.png" alt="header" width="100%" />
+
+<h1>
+    @bedtime-coders/elysia-openapi
+</h1>
     <a href="https://npmjs.com/package/@bedtime-coders/elysia-openapi">
         <img src="https://img.shields.io/npm/v/@bedtime-coders/elysia-openapi.svg?style=flat-square" alt="npm version" />
     </a>
@@ -11,13 +15,9 @@
     </a>
 </div>
 
-<h1 align="center">
-    @bedtime-coders/elysia-openapi
-</h1>
+Use this plugin to effortlessly expose a beautiful [OpenAPI](https://github.com/OAI/OpenAPI-Specification) reference page from your ElysiaJS application with zero configuration. Just add the plugin to your Elysia app and you're good to go!
 
-Use this plugin to expose a beautiful [OpenAPI](https://github.com/OAI/OpenAPI-Specification) reference page from your ElysiaJS application with zero configuration. Just add the plugin to your Elysia app and you're good to go!
-
-👉 **Why use this over `@elysiajs/swagger`?** This is a fork of `@elysiajs/swagger` with updated dependencies and a few opinionated changes to the defaults. If [@elysiajs/swagger](https://github.com/elysiajs/elysia-swagger) suits your needs (and you don't need the latest version of [Scalar API Reference](https://github.com/scalar/scalar/tree/main/packages/api-reference)), then by all means, use that instead.
+👉 **Why use this over `@elysiajs/swagger`?** This is a fork of `@elysiajs/swagger` with updated dependencies and [a few other opinionated changes](#changes-from-elysiajs-swagger). If [@elysiajs/swagger](https://github.com/elysiajs/elysia-swagger) suits your needs (and you don't need the latest version of [Scalar API Reference](https://github.com/scalar/scalar/tree/main/packages/api-reference)), then by all means, use that instead.
 
 ## Add it to your Elysia app
 ```bash
@@ -62,6 +62,14 @@ const app = new Elysia()
 ```
 
 Visit `http://localhost:8080/docs` to see the generated OpenAPI reference page ✨
+
+## Changes from `@elysiajs/swagger`
+
+- Update dependencies to the latest versions (at the time of writing), including [Scalar API Reference](https://github.com/scalar/scalar)
+- Fix code to support the latest version of these dependencies
+- Rename plugin from `swagger` to `openapi`
+- Change the default API Reference path to `/docs`, serving either Scalar API Reference (default) or Swagger UI
+- Change the default `openapi.json` serving path to `/docs/json`
 
 ## Give us a ⭐️
 
