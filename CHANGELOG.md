@@ -1,5 +1,11 @@
 # `@bedtime-coders/elysia-openapi` Changelog
 
+## 0.0.8
+
+### Patch Changes
+
+-   Fix GitHub Release permissions _[`f518139`](https://github.com/bedtime-coders/elysia-openapi/commit/f518139bf3863eb0c1fafa541f6b39f4a2c53c3a) [@yamcodes](https://github.com/yamcodes)_
+
 ## 0.0.7
 
 ### Patch Changes
