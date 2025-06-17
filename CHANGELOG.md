@@ -1,5 +1,11 @@
 # `@bedtime-coders/elysia-openapi` Changelog
 
+## 0.0.13
+
+### Patch Changes
+
+-   Fix Changeset Publish NPM*TOKEN *[`23aff67`](https://github.com/bedtime-coders/elysia-openapi/commit/23aff67e1eed4547fe1f358a2b13a22fb41a111a) [@yamcodes](https://github.com/yamcodes)\_
+
 ## 0.0.12
 
 ### Patch Changes
