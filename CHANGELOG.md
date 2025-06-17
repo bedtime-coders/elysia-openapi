@@ -1,5 +1,11 @@
 # `@bedtime-coders/elysia-openapi` Changelog
 
+## 0.0.4
+
+### Patch Changes
+
+-   5b7cfb9: Fix publishing issue
+
 ## 0.0.3
 
 ### Patch Changes
