@@ -3,8 +3,9 @@
 [![npm][npm-version-src]][npm-version-href]
 [![Bundlephobia][bundle-src]][bundle-href]
 [![Elysia][elysia-src]][elysia-href]
-[![License][license-src]][license-href]
-[![Stars][github-stars-src]][github-stars-href]
+<!-- These 2 were not working when I tested. Enable them if it works -->
+<!-- [![License][license-src]][license-href]
+[![Stars][github-stars-src]][github-stars-href] -->
 
 A plugin for [ElysiaJS](https://github.com/elysiajs/elysia) to auto-generate an [OpenAPI](https://github.com/OAI/OpenAPI-Specification) reference page.
 
