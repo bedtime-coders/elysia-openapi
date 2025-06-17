@@ -116,7 +116,7 @@ describe("OpenAPI", () => {
 		const res = await app.handle(req("/v2/swagger"));
 		expect(res.status).toBe(200);
 
-		const resJson = await app.handle(req("/v2/docs/json"));
+		const resJson = await app.handle(req("/v2/swagger/json"));
 		expect(resJson.status).toBe(200);
 	});
 
