@@ -71,9 +71,8 @@ export const openapi = <Path extends string = "/docs">({
 					scalarVersion,
 					{
 						url: specPath,
+						theme: "elysiajs",
 						...scalarConfig,
-						// so we can showcase the elysia theme
-						_integration: "elysiajs",
 					} satisfies Partial<ApiReferenceConfiguration>,
 					scalarCDN,
 				),
