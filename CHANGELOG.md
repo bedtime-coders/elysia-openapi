@@ -1,5 +1,11 @@
 # `@bedtime-coders/elysia-openapi` Changelog
 
+## 0.0.10
+
+### Patch Changes
+
+-   Fix GitHub CI _[`ac403ae`](https://github.com/bedtime-coders/elysia-openapi/commit/ac403aea1c8bc5d607901b0b058f3719bf4218fc) [@yamcodes](https://github.com/yamcodes)_
+
 ## 0.0.9
 
 ### Patch Changes
