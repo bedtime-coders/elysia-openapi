@@ -4,9 +4,11 @@
 <h1>
     @bedtime-coders/elysia-openapi
 </h1>
-    <a href="https://npmjs.com/package/@bedtime-coders/elysia-openapi"><img src="https://img.shields.io/npm/v/@bedtime-coders/elysia-openapi.svg?style=flat-square" alt="npm version" /></a>
-    <a href="https://bundlephobia.com/package/@bedtime-coders/elysia-openapi"><img src="https://img.shields.io/bundlephobia/minzip/@bedtime-coders/elysia-openapi.svg?style=flat-square" alt="bundlephobia" /></a>
-    <a href="https://elysiajs.com/"><img src="https://img.shields.io/badge/%F0%9F%A6%8A-f6f8fa?label=elysia&color=blue" alt="elysia" /></a>
+    <a href="https://npmjs.com/package/@bedtime-coders/elysia-openapi"><img src="https://img.shields.io/npm/v/@bedtime-coders/elysia-openapi.svg?color=purple" alt="npm version" /></a>
+    <a href="https://bundlephobia.com/package/@bedtime-coders/elysia-openapi"><img src="https://img.shields.io/bundlephobia/minzip/@bedtime-coders/elysia-openapi.svg?color=purple" alt="bundlephobia" /></a>
+    <a href="https://elysiajs.com/"><img src="https://img.shields.io/badge/%F0%9F%A6%8A-f6f8fa?label=elysia&color=purple" alt="elysia" /></a>
+    <a href="https://github.com/bedtime-coders/elysia-openapi/blob/main/LICENSE"><img src="https://img.shields.io/github/license/bedtime-coders/elysia-openapi?label=license&color=purple" alt="license" /></a>
+    <a href="https://github.com/bedtime-coders/elysia-openapi/stargazers/"><img src="https://img.shields.io/github/stars/bedtime-coders/elysia-openapi" alt="star" /></a>
 </div>
 
 Use this plugin to effortlessly expose a beautiful [OpenAPI](https://github.com/OAI/OpenAPI-Specification) reference page from your ElysiaJS application with zero configuration. Just add the plugin to your Elysia app and you're good to go!
