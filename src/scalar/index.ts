@@ -35,7 +35,7 @@ export const ScalarRender = (
   <body>
     <script
       id="api-reference"
-      data-url="${config.spec?.url}"
+      data-url="${config.url}"
       data-configuration='${JSON.stringify(config)}'
     >
     </script>

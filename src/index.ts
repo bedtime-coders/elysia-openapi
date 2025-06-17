@@ -70,14 +70,11 @@ export const openapi = <Path extends string = "/docs">({
 					info,
 					scalarVersion,
 					{
-						spec: {
-							...scalarConfig.spec,
-							url: specPath,
-						},
+						url: specPath,
 						...scalarConfig,
 						// so we can showcase the elysia theme
 						_integration: "elysiajs",
-					} satisfies ApiReferenceConfiguration,
+					} satisfies Partial<ApiReferenceConfiguration>,
 					scalarCDN,
 				),
 		{
