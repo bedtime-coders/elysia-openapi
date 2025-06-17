@@ -1,5 +1,11 @@
 # `@bedtime-coders/elysia-openapi` Changelog
 
+## 0.0.12
+
+### Patch Changes
+
+-   Fix Changeset Publish _[`a3f75f0`](https://github.com/bedtime-coders/elysia-openapi/commit/a3f75f086b8966f2bd03480187c0eb79bbcf3ada) [@yamcodes](https://github.com/yamcodes)_
+
 ## 0.0.11
 
 ### Patch Changes
