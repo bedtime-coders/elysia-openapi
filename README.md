@@ -1,20 +1,30 @@
-# `@bedtime-coders/elysia-openapi`
+<div align="center">
+    <img src="./public/header.png" alt="header" width="100%" />
+    <a href="https://npmjs.com/package/@bedtime-coders/elysia-openapi">
+        <img src="https://img.shields.io/npm/v/@bedtime-coders/elysia-openapi.svg?style=flat-square" alt="npm version" />
+    </a>
+    <a href="https://bundlephobia.com/package/@bedtime-coders/elysia-openapi">
+        <img src="https://img.shields.io/bundlephobia/minzip/@bedtime-coders/elysia-openapi.svg?style=flat-square" alt="bundlephobia" />
+    </a>
+    <a href="https://elysiajs.com/">
+        <img src="https://img.shields.io/badge/%F0%9F%A6%8A-f6f8fa?label=elysia&color=blue" alt="elysia" />
+    </a>
+</div>
 
-[![npm][npm-version-src]][npm-version-href]
-[![Bundlephobia][bundle-src]][bundle-href]
-[![Elysia][elysia-src]][elysia-href]
-<!-- These 2 were not working when I tested. Enable them if it works -->
-<!-- [![License][license-src]][license-href]
-[![Stars][github-stars-src]][github-stars-href] -->
+<h1 align="center">
+    @bedtime-coders/elysia-openapi
+</h1>
 
-A plugin for [ElysiaJS](https://github.com/elysiajs/elysia) to auto-generate an [OpenAPI](https://github.com/OAI/OpenAPI-Specification) reference page.
+Use this plugin to expose a beautiful [OpenAPI](https://github.com/OAI/OpenAPI-Specification) reference page from your ElysiaJS application with zero configuration. Just add the plugin to your Elysia app and you're good to go!
 
-## Installation
+👉 **Why use this over `@elysiajs/swagger`?** This is a fork of `@elysiajs/swagger` with updated dependencies and a few opinionated changes to the defaults. If [@elysiajs/swagger](https://github.com/elysiajs/elysia-swagger) suits your needs (and you don't need the latest version of [Scalar API Reference](https://github.com/scalar/scalar/tree/main/packages/api-reference)), then by all means, use that instead.
+
+## Add it to your Elysia app
 ```bash
 bun add @bedtime-coders/elysia-openapi
 ```
 
-## Example
+## Try it out
 ```typescript
 import { Elysia, t } from 'elysia'
 import { openapi } from '@bedtime-coders/elysia-openapi'
@@ -53,30 +63,34 @@ const app = new Elysia()
 
 Visit `http://localhost:8080/docs` to see the generated OpenAPI reference page ✨
 
-# `config`
+## Give us a ⭐️
 
-## `provider`
+Hey! If you like this plugin, please give us a ⭐️ on GitHub so more people can find it. Thank you!
+
+## Configuration for nerds
+
+### `provider`
 `@default 'scalar'`
 
 Choose between [Scalar API Reference](https://github.com/scalar/scalar) & [Swagger UI](https://github.com/swagger-api/swagger-ui)
 
-## `scalar`
+### `scalar`
 Customize `scalarConfig`, refers to [Scalar config](https://github.com/scalar/scalar/blob/main/documentation/configuration.md)
 
-## `swagger`
+### `swagger`
 Customize Swagger config, refers to [Swagger 3.0.3 config](https://swagger.io/specification/v3)
 
-## `path`
+### `path`
 `@default '/docs'`
 
 The endpoint to expose Swagger UI
 
-## `excludeStaticFile`
+### `excludeStaticFile`
 `@default true`
 
 Determine if Swagger should exclude static files.
 
-## `exclude`
+### `exclude`
 `@default []`
 
 Paths to exclude from the Swagger endpoint
@@ -93,3 +107,6 @@ Paths to exclude from the Swagger endpoint
 [npm-version-href]: https://npmjs.com/package/@bedtime-coders/elysia-openapi
 [github-stars-src]: https://img.shields.io/github/stars/bedtime-coders/elysia-openapi?color=blue
 [github-stars-href]: https://github.com/bedtime-coders/elysia-openapi/stargazers
+
+<!-- Public assets -->
+[header-src]: ./public/header.png
