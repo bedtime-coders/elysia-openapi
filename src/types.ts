@@ -2,7 +2,7 @@ import type { ReferenceConfiguration } from "@scalar/types";
 import type { OpenAPIV3 } from "openapi-types";
 import type { SwaggerUIOptions } from "./swagger/types";
 
-export interface ElysiaSwaggerConfig<Path extends string = "/swagger"> {
+export interface ElysiaOpenAPICConfig<Path extends string = "/docs"> {
 	/**
 	 * Customize Swagger config, refers to Swagger 2.0 config
 	 *
@@ -64,7 +64,7 @@ export interface ElysiaSwaggerConfig<Path extends string = "/swagger"> {
 	/**
 	 * The endpoint to expose OpenAPI Documentation
 	 *
-	 * @default '/swagger'
+	 * @default '/docs'
 	 */
 	path?: Path;
 	/**

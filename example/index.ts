@@ -1,5 +1,5 @@
 import { Elysia, t } from "elysia";
-import { swagger } from "../src/index";
+import { openapi } from "../src/index";
 
 const schema = t.Object({
 	test: t.Literal("hello"),
@@ -7,7 +7,7 @@ const schema = t.Object({
 
 const app = new Elysia()
 	.use(
-		swagger({
+		openapi({
 			provider: "scalar",
 			documentation: {
 				info: {

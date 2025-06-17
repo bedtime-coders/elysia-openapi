@@ -2,9 +2,9 @@ if ("Bun" in globalThis) {
 	throw new Error("❌ Use Node.js to run this test!");
 }
 
-import { swagger } from "@elysiajs/swagger";
+import { openapi } from "@bedtime-coders/elysia-openapi";
 
-if (typeof swagger !== "function") {
+if (typeof openapi !== "function") {
 	throw new Error("❌ ESM Node.js failed");
 }
 

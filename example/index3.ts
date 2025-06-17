@@ -1,11 +1,11 @@
 import { Elysia, InternalRoute } from "elysia";
-import { swagger } from "../src/index";
+import { openapi } from "../src/index";
 import { registerSchemaPath } from "../src/utils";
 import { plugin } from "./plugin";
 
 const app = new Elysia()
 	.use(
-		swagger({
+		openapi({
 			provider: "scalar",
 			documentation: {
 				info: {

@@ -1,6 +1,6 @@
 {
 	"type": "commonjs",
 	"dependencies": {
-		"@elysiajs/swagger": "../../.."
+		"@bedtime-coders/elysia-openapi": "../../.."
 	}
 }

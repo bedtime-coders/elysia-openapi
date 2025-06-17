@@ -1,12 +1,12 @@
 import { Elysia } from "elysia";
-import { swagger } from "../src/index";
+import { openapi } from "../src/index";
 import { plugin } from "./plugin";
 
 const app = new Elysia({
 	// aot: false
 })
 	.use(
-		swagger({
+		openapi({
 			documentation: {
 				info: {
 					title: "Elysia",

@@ -40,7 +40,9 @@
 	},
 	"keywords": [
 		"elysia",
-		"swagger"
+		"swagger",
+		"openapi",
+		"scalar"
 	],
 	"homepage": "https://github.com/yamcodes/elysia-openapi",
 	"repository": {

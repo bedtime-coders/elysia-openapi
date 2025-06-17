@@ -2,13 +2,13 @@ import { it } from "bun:test";
 import SwaggerParser from "@apidevtools/swagger-parser";
 import { fail } from "assert";
 import { Elysia, t } from "elysia";
-import { swagger } from "../src";
+import { openapi } from "../src";
 
 const req = (path: string) => new Request(`http://localhost${path}`);
 
 it("returns a valid Swagger/OpenAPI json config for many routes", async () => {
 	const app = new Elysia()
-		.use(swagger())
+		.use(openapi())
 		.get("/", () => "hi", {
 			response: t.String({ description: "sample description" }),
 		})
@@ -79,6 +79,6 @@ it("returns a valid Swagger/OpenAPI json config for many routes", async () => {
 
 	await app.modules;
 
-	const res = await app.handle(req("/swagger/json")).then((x) => x.json());
+	const res = await app.handle(req("/docs/json")).then((x) => x.json());
 	await SwaggerParser.validate(res).catch((err) => fail(err));
 });

@@ -9,10 +9,10 @@ bun add @bedtime-coders/elysia-openapi
 ## Example
 ```typescript
 import { Elysia, t } from 'elysia'
-import { swagger } from '@bedtime-coders/elysia-openapi'
+import { openapi } from '@bedtime-coders/elysia-openapi'
 
 const app = new Elysia()
-    .use(swagger())
+    .use(openapi())
     .get('/', () => 'hi', { response: t.String({ description: 'sample description' }) })
     .post(
         '/json/:id',
@@ -43,13 +43,13 @@ const app = new Elysia()
     .listen(8080);
 ```
 
-Then go to `http://localhost:8080/swagger`.
+Then go to `http://localhost:8080/docs`.
 
 # config
 
 ## provider
 @default 'scalar'
-Choose between [Scalar](https://github.com/scalar/scalar) & [SwaggerUI](https://github.com/swagger-api/swagger-ui)
+Choose between [Scalar API Reference](https://github.com/scalar/scalar) & [Swagger UI](https://github.com/swagger-api/swagger-ui)
 
 ## scalar
 Customize scalarConfig, refers to [Scalar config](https://github.com/scalar/scalar/blob/main/documentation/configuration.md)
@@ -58,9 +58,9 @@ Customize scalarConfig, refers to [Scalar config](https://github.com/scalar/scal
 Customize Swagger config, refers to [Swagger 3.0.3 config](https://swagger.io/specification/v3)
 
 ## path
-@default '/swagger'
+@default '/docs'
 
-The endpoint to expose Swagger
+The endpoint to expose Swagger UI
 
 ## excludeStaticFile
 @default true

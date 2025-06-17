@@ -9,11 +9,11 @@ import type { ElysiaSwaggerConfig } from "./types";
 import { filterPaths, registerSchemaPath } from "./utils";
 
 /**
- * Plugin for [elysia](https://github.com/elysiajs/elysia) that auto-generate Swagger page.
+ * Plugin for [elysia](https://github.com/elysiajs/elysia) that auto-generate OpenAPI page.
  *
- * @see https://github.com/elysiajs/elysia-swagger
+ * @see https://github.com/bedtime-coders/elysia-openapi
  */
-export const swagger = <Path extends string = "/swagger">({
+export const openapi = <Path extends string = "/docs">({
 	provider = "scalar",
 	scalarVersion = "latest",
 	scalarCDN = "",
@@ -21,7 +21,7 @@ export const swagger = <Path extends string = "/swagger">({
 	documentation = {},
 	version = "5.9.0",
 	excludeStaticFile = true,
-	path = "/swagger" as Path,
+	path = "/docs" as Path,
 	specPath = `${path}/json`,
 	exclude = [],
 	swaggerOptions = {},
@@ -45,7 +45,7 @@ export const swagger = <Path extends string = "/swagger">({
 
 	const relativePath = path.startsWith("/") ? path.slice(1) : path;
 
-	const app = new Elysia({ name: "@elysiajs/swagger" });
+	const app = new Elysia({ name: "@bedtime-coders/elysia-openapi" });
 
 	const page = new Response(
 		provider === "swagger-ui"
@@ -187,4 +187,4 @@ export const swagger = <Path extends string = "/swagger">({
 };
 
 export type { ElysiaSwaggerConfig };
-export default swagger;
+export default openapi;
