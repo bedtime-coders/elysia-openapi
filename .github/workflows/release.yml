@@ -27,7 +27,6 @@ jobs:
         uses: changesets/action@v1
         with:
           publish: bun publish
-          createGithubReleases: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_CONFIG_TOKEN: ${{ secrets.NPM_TOKEN }}
