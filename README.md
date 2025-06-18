@@ -13,7 +13,7 @@
 
 Use this plugin to effortlessly expose a beautiful [OpenAPI](https://github.com/OAI/OpenAPI-Specification) reference page from your ElysiaJS application with zero configuration. Just add the plugin to your Elysia app and you're good to go!
 
-👉 **Why use this over `@elysiajs/swagger`?** This is a fork of `@elysiajs/swagger` with updated dependencies and [a few opinionated changes](#changes-from-elysiajs-swagger). If [@elysiajs/swagger](https://github.com/elysiajs/elysia-swagger) suits your needs (and you don't need the latest version of [Scalar API Reference](https://github.com/scalar/scalar/tree/main/packages/api-reference)), then by all means, use that instead.
+👉 **Why use this over `@elysiajs/swagger`?** This is a fork of `@elysiajs/swagger` with updated dependencies and [a few opinionated changes](#changes-from-elysiajsswagger). If [@elysiajs/swagger](https://github.com/elysiajs/elysia-swagger) suits your needs (and you don't need the latest version of [Scalar API Reference](https://github.com/scalar/scalar/tree/main/packages/api-reference)), then by all means, use that instead.
 
 ## Add it to your Elysia app
 ```bash
